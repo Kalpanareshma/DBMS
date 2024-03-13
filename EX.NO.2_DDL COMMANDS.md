@@ -21,45 +21,65 @@ To create a student database and execute DDL queries using SQL.
 5. RENAME: This is used to rename an object existing in the database.
 
 ## Query:
-### 1) Create a database studentdb
-
-### SQL QUERY:
-
-### OUTPUT:
-
-### 2) Create a table student  and insert any two rows with the following fieds RegisterNumber,Name,Age,Address,Phone number
+### 1) Create a table student  and insert any two rows with the following fieds RegisterNumber,Name,Age,Address,Phone number
 
 ### SQL QUERY: 
+```
+create table students(
+    registernumber integer,
+    name varchar(50),
+    age integer,
+    address varchar(60),
+    phonenumber integer
+    
+);
+```
 
 
 ### OUTPUT:
+![dbms1](https://github.com/DrUmaRaniV/DBMS/assets/122040453/281bf6a0-86e1-485d-8a0a-c76b9fdf5c40)
 
-### 3) Alter the above student table by adding another attribute department
+### 2) Alter the above student table by adding another attribute department
 
 ### SQL QUERY: 
+```
+alter table students
+add department char(80);
+```
 
 ### OUTPUT:
+![dbms1](https://github.com/DrUmaRaniV/DBMS/assets/122040453/96cffa5d-f454-4b72-8868-3bf6a651c1c6)
 
-### 4) Rename the student table to mystudent
+### 3) Rename the student table to mystudent
 
 ### SQL QUERY: 
-
-
-
+```
+alter table students rename to mystudent;
+```
 ### OUTPUT:
+![dbms2](https://github.com/DrUmaRaniV/DBMS/assets/122040453/48bcb862-c006-431f-b831-9b743a898511)
 
-### 5) Delete the mystudent rows using truncate keyword
+### 4) Delete the mystudent rows using truncate keyword
 
 ### SQL QUERY: 
-
-
+```
+truncate table students
+```
 ### OUTPUT:
-### 4) Drop the mystudent table
+![dbms3](https://github.com/DrUmaRaniV/DBMS/assets/122040453/6fc6f9bc-6069-469b-a744-1a2f7e80fa48)
+
+
+### 5) Drop the mystudent table
  
 ### SQL QUERY: 
-
-
+```
+drop table students;
+```
 ### OUTPUT:
+![dbms3](https://github.com/DrUmaRaniV/DBMS/assets/122040453/6fb96d7f-ebff-4600-89ff-b4678dd9a4a9)
+
+
+
 
 
 
