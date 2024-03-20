@@ -70,45 +70,80 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 
 ### QUERY:
-
+```
+ select ename from emp where sal>(select sal from emp where empno=7566);
+```
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/6d72287f-f1c5-4176-890f-cddebfcdc702)
+
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
+```
+ select ename,job,sal from emp where sal = (select min(sal) from emp);
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/53461b03-340c-4dd5-a517-23c10080c764)
+
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
+```
+> SELECT ename, job
+-> FROM emp
+-> WHERE deptno = 10 AND job IN (SELECT job FROM emp WHERE job = 'SALES');
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/c579e160-2b9e-4b13-ada1-e2acb75fa130)
+
 
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
+```
+ CREATE VIEW emv5 AS SELECT empno, ename, job FROM emp WHERE deptno = 10;
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/cdd31354-fe06-4406-94ee-53a554b220b7)
+
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
+```
+CREATE VIEW emv30 AS SELECT empno AS `Employee Number`, ename AS `Employee Name`, sal AS `Salary` FROM emp WHERE deptno = 30;
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/05e5cdf4-3d5a-4f4d-bd32-094988fb957a)
+
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
+```
+ UPDATE emv5 SET sal = sal * 1.1 WHERE job = 'CLERK';
+ UPDATE emp
+    -> SET sal = sal * 1.10
+    -> WHERE job = 'CLERK';
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/07e2c56b-8196-4561-b2f9-ccd0b8e6dc01)
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/07b07451-3405-45af-92c7-988b74e7abd7)
+
 
 ## Create a Customer1 Table
 ```sql
@@ -141,31 +176,71 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
+```
+ SELECT salesman1.name AS "Salesman",
+    ->        customer1.cust_name AS "Customer Name",
+    ->        salesman1.city AS "City"
+    -> FROM salesman1
+    -> INNER JOIN customer1 ON salesman1.city = customer1.city;
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/fd0954d3-43e7-4628-af2c-e5435cd46cae)
+
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
 ### QUERY:
+```
+ SELECT customer1.cust_name AS "Customer Name",
+    ->        customer1.city AS "Customer City",
+    ->        salesman1.name AS "Salesman",
+    ->        salesman1.commission AS "Commission"
+    -> FROM salesman1
+    -> INNER JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id
+    -> WHERE salesman1.commission > 0.13;
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/2a8fb401-6496-4218-b5d6-7e6b60e0a328)
+
 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
+```
+ select * from Customer1 natural join salesman1;
+```
 
 
 ### OUTPUT:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/6efbc3ce-56ce-4391-9dcc-c9098ce20705)
+
 
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
+```
+ SELECT *
+    -> FROM salesman1
+    -> LEFT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
+
+ SELECT *
+    -> FROM salesman1
+    -> RIGHT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
+```
 
 
 ### OUTPUT:
+### LEFT JOIN:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/6c311f89-a040-4bc7-828f-1fa6ed2cf41d)
+### RIGHT JOIN:
+![image](https://github.com/Kalpanareshma/DBMS/assets/122040453/f4c0f5d0-2a5c-479d-9c29-3b8f6352d8d6)
+
+
 
 ## RESULT 
 ### Thus the basics of subqueries,views,joins are performed in SQL.
